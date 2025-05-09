@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vayura</title>
+    <link rel="icon" type="image/png" href="img/flower.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
 
@@ -18,7 +19,8 @@
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary font-styling">
             <div class="container-fluid ">
-                <a class="navbar-brand" href="#">Vayura</a>
+                <img src="./img/flower.png" alt="" class="nav-icon">
+                <a class="navbar-brand navigation-text" href="#">Vayura</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -27,16 +29,16 @@
                 <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2  mb-lg-0 navigate-links">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link navigation-text" href="#">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./contactUs.html">Contact Us</a>
+                            <a class="nav-link navigation-text " href="#contact-section">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Appointment</a>
+                            <a class="nav-link navigation-text" href="#">Appointment</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Sign Up</a>
+                            <a class="nav-link navigation-text" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Sign In</a>
                         </li>
                     </ul>
                 </div>
@@ -49,13 +51,13 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="./img/crauselC.jpg" class="d-block w-100" alt="...">
+                <img src="./img/crauselC.jpg" class="d-block w-100" alt="pg1">
             </div>
             <div class="carousel-item">
-                <img src="./img/crauselB.jpg" class="d-block w-100" alt="...">
+                <img src="./img/crauselB.jpg" class="d-block w-100" alt="pg2">
             </div>
             <div class="carousel-item">
-                <img src="./img/crauselA.webp" class="d-block w-100" alt="...">
+                <img src="./img/crauselA.webp" class="d-block w-100" alt="pg3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -69,30 +71,31 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
+ 
     <!-- Contact us -->
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="text-center contact-heading mb-5" class="contactUs">Contact Us</h2>
-            <div class="row">
+    <section id="contact-section">
+        <div class="container font-styling">
+            <h2 class="text-center mt-3 contact-heading mb-5" class="contactUs">Contact Us</h2>
+            <div class="row d-flex justify-content-around">
                 <div class="col-md-6 mb-4">
                     <form class="form-box">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control form-input" id="name" placeholder="Your name" required>
+                            <label for="name" class="form-label ">Full Name</label>
+                            <input type="text" class="form-control form-input" id="name" placeholder="Your name"
+                                required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="name@gmail.com" required>
+                            <label for="email" class="form-label form-in">Email address</label>
+                            <input type="email" class="form-control form-input" id="email" placeholder="name@gmail.com" required>
                         </div>
                         <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                            <label for="subject" class="form-label form-in">Subject</label>
+                            <input type="text" class="form-control form-input" id="subject" placeholder="Subject" required>
                         </div>
                         <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="4" placeholder="Write your message here..."
-                                required></textarea>
+                            <label for="message" class="form-label form-in">Message</label>
+                            <textarea class="form-control form-input" id="message" rows="4"
+                                placeholder="Write your message here..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-yoga" class="btn btn-submit">Send Message</button>
                     </form>
@@ -117,74 +120,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-bg font-styling">
-                <div class="modal-header ">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        
-                        <div data-mdb-input-init class="form-outline mb-4">
-                          <input type="email" id="form2Example1" class="form-control form-input" />
-                          <label class="form-label" for="form2Example1">Email address</label>
-                        </div>
-                    
-                        <div data-mdb-input-init class="form-outline mb-4">
-                          <input type="password" id="form2Example2" class="form-control" />
-                          <label class="form-label" for="form2Example2">Password</label>
-                        </div>
-                      
-                       
-                        <div class="row mb-4">
-                          <div class="col d-flex justify-content-center">
-                            <!-- Checkbox -->
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-                              <label class="form-check-label" for="form2Example34"> Remember me </label>
-                            </div>
-                          </div>
-                      
-                          <div class="col">
-                            <!-- Simple link -->
-                            <a href="#!">Forgot password?</a>
-                          </div>
-                        </div>
-                      
-                        <!-- Submit button -->
-                        <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-                      
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                          <p>Not a member? <a href="#!">Register</a></p>
-                          <p>or sign up with:</p>
-                          <button  data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-facebook-f"></i>
-                          </button>
-                      
-                          <button  data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-google"></i>
-                          </button>
-                      
-                          <button  data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-twitter"></i>
-                          </button>
-                      
-                          <button  data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-github"></i>
-                          </button>
-                        </div>
-                      </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
 
 
     <footer class="text-center text-lg-start text-muted ">
@@ -194,15 +131,11 @@
             </div>
             <div>
 
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-twitter"></i>
-                </a>
+                
                 <a href="" class="me-4 text-reset">
                     <i class="fab fa-google"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                
                 <a href="" class="me-4 text-reset">
                     <i class="fab fa-linkedin"></i>
                 </a>
@@ -289,6 +222,148 @@
             <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Vayura</a>
         </div>
     </footer>
+
+
+       <!-- sign-in page  -->
+        <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-bg font-styling">
+                <div class="modal-header ">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="email" id="form2Example1" class="form-control form-input"
+                                placeholder="Enter Email" />
+
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="password" id="form2Example2" class="form-control form-input"
+                                placeholder="Enter Password" />
+                        </div>
+
+
+                        <div class="row  ">
+                            <div class="col d-flex justify-content-center  ">
+                                <!-- Checkbox -->
+                                <div class="form-check ">
+                                    <input class="form-check-input " type="checkbox" value="" id="form2Example34"
+                                        checked />
+                                    <label class="form-check-label text-coloring" for="form2Example34 "> Remember me
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col ">
+                                <!-- Simple link -->
+                                <a href="#!" class="text-coloring ">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="row">
+                            <button type="button" class="btn  btn-block mb-4 btn-custom">Sign
+                                in</button>
+                        </div>
+
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Not a member? <a href="#" data-bs-dismiss="modal" class="text-coloring"
+                                    data-bs-toggle="modal" data-bs-target="#Register-modal">Register</a></p>
+                            <p>or sign up with:</p>
+
+
+                            <button type="button" class="btn mx-1">
+                                <i class="fab fa-google"></i>
+                            </button>
+
+                            <button type="button" class="btn mx-1">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- sign-up page  -->
+    <div class=" modal fade" id="Register-modal" tabindex="-1" aria-labelledby="Register-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-bg">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="font-styling ">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div data-mdb-input-init class="form-outline">
+                                    <input type="text" id="form3Example1" class="form-control form-input" placeholder="First Name" />
+                                    
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div data-mdb-input-init class="form-outline">
+                                    <input type="text" id="form3Example2" class="form-control form-input" placeholder=" Last Name" />
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="email" id="form3Example3" class="form-control form-input" placeholder="Enter Email"/>
+                            
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="password" id="form3Example4" class="form-control form-input" placeholder="Enter Password" />
+                            
+                        </div>
+
+                        <div class="form-check d-flex justify-content-center mb-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                            <label class="form-check-label" for="form2Example33">
+                                Subscribe to our newsletter
+                            </label>
+                        </div>
+
+                         <div class="row ">
+                             <button data-mdb-ripple-init type="button" class="btn  btn-block mb-4 btn-custom">Sign
+                            up</button>
+                         </div>
+
+                         <div class="text-center">
+                            <p>Already a member? <a href="#" data-bs-dismiss="modal" class="text-coloring"
+                                    data-bs-toggle="modal" data-bs-target="#LoginModal">Login</a></p>
+                       
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>or sign up with:</p>
+
+                            <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button type="button" class="btn mx-1">
+                                <i class="fab fa-github"></i>
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"

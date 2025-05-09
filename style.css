@@ -30,12 +30,36 @@ body {
 .navigate-links {
     margin-right: 10rem;
 }
+.nav-icon{
+    width: 50px;
+    font-weight: bold;
+}
+
 
 .navigate {
     border: solid red;
 
 }
+.navigation-text:hover{
+    color: var(--secondary-color);
+}
+.text-coloring{
+    color: var(--secondary-color);
+    
+}
 
+.btn-custom{
+    width:  8rem;
+    margin-top: .5rem;
+    margin-left: 11rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-custom:active{
+    outline-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
 .modal-bg {
     background-color: var(--primary-color);
 }
@@ -63,8 +87,8 @@ body {
 
 
 .form-control:focus {
-    border-color: #5c8a63;
-    box-shadow: 0 0 0 0.2rem rgba(92, 138, 99, 0.25);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem var(--primary-color);
 }
 
 .form-box {
@@ -77,12 +101,15 @@ body {
 
 
 .btn-yoga {
-    background-color: var(--secondary-color);
-    color: rgb(235, 229, 229);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .btn-yoga:hover {
-    background-color: #3c6742;
+    outline: none;
+   outline-color: var(--primary-color);
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
 }
 
 iframe {
