@@ -1,43 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 
-:root{
-    --primary-color:#fff6f9;
-    --secondary-color:#ed5e93;
-    --warning-color:#fbf4d7;
-    --info-color:#d8daff;
+:root {
+    --primary-color: #fff6f9;
+    --secondary-color: #ed5e93;
+    --warning-color: #fbf4d7;
+    --info-color: #d8daff;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
-    
+
 }
 
-body{
+body {
     background-color: var(--primary-color);
 }
+
 .font-styling {
     font-family: "Merriweather", serif;
     font-optical-sizing: auto;
     font-weight: 0;
     font-style: normal;
     font-variation-settings:
-      "wdth" 100;
-  }
+        "wdth" 100;
+}
+
 .navigate-links {
     margin-right: 10rem;
- }
- .navigate{
-    border:solid red;
-   
- }
+}
 
-.modal-bg{
+.navigate {
+    border: solid red;
+
+}
+
+.modal-bg {
     background-color: var(--primary-color);
 }
 
-.form-input{
+.form-input {
     background-color: var(--primary-color);
     border-top: none;
     border-left: none;
@@ -45,3 +48,46 @@ body{
     outline: none;
 }
 
+/* Contact us page */
+
+.contact-section {
+    padding: 60px 0;
+}
+
+.contact-heading {
+    color: var(--secondary-color);
+}
+
+
+
+
+
+.form-control:focus {
+    border-color: #5c8a63;
+    box-shadow: 0 0 0 0.2rem rgba(92, 138, 99, 0.25);
+}
+
+.form-box {
+    background-color: var(--secondary-color);
+    /* 0.0 = fully transparent, 1.0 = fully white */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.btn-yoga {
+    background-color: var(--secondary-color);
+    color: rgb(235, 229, 229);
+}
+
+.btn-yoga:hover {
+    background-color: #3c6742;
+}
+
+iframe {
+    border: 0;
+    width: 70%;
+    height: 250px;
+    border-radius: 10px;
+}
