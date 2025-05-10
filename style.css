@@ -50,25 +50,34 @@ body {
 
 /* Contact us page */
 
-.contact-section {
+#maincontact {
     padding: 60px 0;
+    background: url('https://as1.ftcdn.net/v2/jpg/03/30/49/72/1000_F_330497250_ZzWZ6qrLWJ973kgTLI2foKjDoLBtIPbi.jpg') no-repeat center center;
+        background-size: cover;
 }
 
 .contact-heading {
     color: var(--secondary-color);
 }
 
-
+.maindivformrows{
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    /* flex-wrap: wrap; */
+    
+}
 
 
 
 .form-control:focus {
     border-color: #5c8a63;
     box-shadow: 0 0 0 0.2rem rgba(92, 138, 99, 0.25);
+    background-color: rgba(156, 173, 181, 0.8);
 }
 
-.form-box {
-    background-color: var(--secondary-color);
+.formme {
+    background-color:rgba(156, 173, 181, 0.3);
     /* 0.0 = fully transparent, 1.0 = fully white */
     padding: 30px;
     border-radius: 10px;
@@ -76,18 +85,27 @@ body {
 }
 
 
-.btn-yoga {
+.submitbtn {
     background-color: var(--secondary-color);
     color: rgb(235, 229, 229);
 }
 
-.btn-yoga:hover {
+.submitbtn:hover {
     background-color: #3c6742;
 }
 
-iframe {
+
+.form-control:focus {
+            border-color: #5c8a63;
+            box-shadow: 0 0 0 0.2rem rgba(92, 138, 99, 0.25);
+        }
+
+.bkgimg {
     border: 0;
     width: 70%;
     height: 250px;
     border-radius: 10px;
 }
+
+/* feedback form */
+

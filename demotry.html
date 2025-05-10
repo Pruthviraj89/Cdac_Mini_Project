@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yoga Center Feedback</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="feedfback.css">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg mx-auto p-4" style="max-width: 600px; border-radius: 15px;">
+            <h2 class="text-center text-success fw-bold">Yoga Center</h2>
+            <p class="text-center">Feedback Form using Bootstrap</p>
+            <p class="text-center text-success"><i class="fa-solid fa-clock"></i> It only takes two minutes!!</p>
+
+            <form id="feedbackForm">
+                <div class="mb-3">
+                    <label class="form-label text-success"><i class="fa-solid fa-user"></i> Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-success"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-success"><i class="fa-solid fa-phone"></i> Phone No</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-success"><i class="fa-solid fa-face-smile"></i> How would you rate
+                        your experience?</label>
+                    <div class="d-flex justify-content-between emoji-rating">
+                        <label><input type="radio" name="emoji" value="1"><span>😡</span></label>
+                        <label><input type="radio" name="emoji" value="2"><span>😟</span></label>
+                        <label><input type="radio" name="emoji" value="3"><span>😐</span></label>
+                        <label><input type="radio" name="emoji" value="4"><span>😊</span></label>
+                        <label><input type="radio" name="emoji" value="5"><span>😁</span></label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-success"><i class="fa-solid fa-comment-dots"></i> Write your
+                        Suggestions:</label>
+                    <textarea class="form-control" id="comments" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Submit</button>
+                <div class="text-success mt-3 text-center" id="responseMsg"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="feedback.js"></script>
+</body>
+
+</html>

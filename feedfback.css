@@ -1,0 +1,14 @@
+.emoji-rating input[type="radio"] {
+    display: none;
+}
+
+.emoji-rating span {
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 5s ease;
+}
+
+.emoji-rating input[type="radio"]:checked+span {
+    transform: scale(1.3);
+}
+
