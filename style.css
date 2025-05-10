@@ -118,3 +118,57 @@ iframe {
     height: 250px;
     border-radius: 10px;
 }
+
+
+
+.image-sizer{
+    width: 200px;
+}
+
+.apointment-form{
+    height: 525px;
+}
+
+
+
+.apt-form-col{
+
+    height: 400px;
+   border:solid var(--secondary-color);
+    border-radius: 2rem;
+    
+}
+
+.form-format-appointment{
+    height: 2rem;
+    border-radius: .5rem;
+    padding: .3rem;
+    background: none;
+    color: var(--secondary-color);
+    
+}
+.apt-heading{
+    color: var(--secondary-color);
+}
+
+.btn-cus-apt{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border:none; 
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.btn-cus-apt:hover{
+    border:solid var(--secondary-color);
+}
+
+.text-area-s{
+    height: 50px;
+    resize: none;
+}
+
+
+
+
+
