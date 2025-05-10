@@ -30,12 +30,36 @@ body {
 .navigate-links {
     margin-right: 10rem;
 }
+.nav-icon{
+    width: 50px;
+    font-weight: bold;
+}
+
 
 .navigate {
     border: solid red;
 
 }
+.navigation-text:hover{
+    color: var(--secondary-color);
+}
+.text-coloring{
+    color: var(--secondary-color);
+    
+}
 
+.btn-custom{
+    width:  8rem;
+    margin-top: .5rem;
+    margin-left: 11rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-custom:active{
+    outline-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
 .modal-bg {
     background-color: var(--primary-color);
 }
@@ -71,9 +95,8 @@ body {
 
 
 .form-control:focus {
-    border-color: #5c8a63;
-    box-shadow: 0 0 0 0.2rem rgba(92, 138, 99, 0.25);
-    background-color: rgba(156, 173, 181, 0.8);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem var(--primary-color);
 }
 
 .formme {
@@ -85,13 +108,16 @@ body {
 }
 
 
-.submitbtn {
-    background-color: var(--secondary-color);
-    color: rgb(235, 229, 229);
+.btn-yoga {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
-.submitbtn:hover {
-    background-color: #3c6742;
+.btn-yoga:hover {
+    outline: none;
+   outline-color: var(--primary-color);
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
 }
 
 
@@ -107,5 +133,56 @@ body {
     border-radius: 10px;
 }
 
-/* feedback form */
 
+
+.image-sizer{
+    width: 200px;
+}
+
+
+
+
+
+
+
+.form-format-appointment{
+    border-radius: .5rem;
+    background: none;
+    color: var(--secondary-color);
+    
+}
+.apt-heading{
+    color: var(--secondary-color);
+}
+
+.btn-cus-apt{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border:none; 
+    border-radius: .5rem;
+}
+
+.btn-cus-apt:hover{
+    border:solid var(--secondary-color);
+}
+
+.text-area-s{
+    height: 50px;
+    resize: none;
+}
+
+
+
+
+
+
+/* middle last page */
+.middlepage1{
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fdfdfd;
+  }
+  
+  .headingmiddle {
+    color: #6f42c1;
+  }
+  
