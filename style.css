@@ -125,24 +125,14 @@ iframe {
     width: 200px;
 }
 
-.apointment-form{
-    height: 525px;
-}
 
 
 
-.apt-form-col{
 
-    height: 400px;
-   border:solid var(--secondary-color);
-    border-radius: 2rem;
-    
-}
+
 
 .form-format-appointment{
-    height: 2rem;
     border-radius: .5rem;
-    padding: .3rem;
     background: none;
     color: var(--secondary-color);
     
@@ -156,7 +146,6 @@ iframe {
     color: var(--secondary-color);
     border:none; 
     border-radius: .5rem;
-    padding: .5rem;
 }
 
 .btn-cus-apt:hover{
