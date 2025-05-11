@@ -3,7 +3,7 @@ import { createDbConnection } from './src/DbConfig/dbconfig.js';
 import cors from 'cors';
 import YogaRouter from './src/routes/YogaRoutes.js';
 import CourseRouter from './src/routes/CourseRoutes.js';
-
+import bookingsRouter from './src/routes/bookingsRoutes.js';
 
 var app=express();
 var conn=createDbConnection();
@@ -17,6 +17,8 @@ app.get("/",(req,res)=>{
  app.use("/yoga/user",YogaRouter);
 
  app.use("/yoga/course",CourseRouter);
+
+ app.use("/bookings", bookingsRouter);
 
 
 

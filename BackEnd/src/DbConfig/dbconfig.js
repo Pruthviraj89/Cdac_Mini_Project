@@ -4,7 +4,7 @@ import{createConnection} from 'mysql2';
 var conn=createConnection({
     host:"localhost",
     user:"root",
-    password:"Pmane@89",
+    password:"cdac",
     database:"yoga"
 });
 conn.connect((error)=>{
