@@ -9,13 +9,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
 
+    <!-- Bootstrap JS (with Popper) CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
     <header>
+     
+
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary font-styling">
             <div class="container-fluid ">
@@ -26,7 +32,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent"">
                     <ul class="navbar-nav mb-2  mb-lg-0 navigate-links">
                         <li class="nav-item">
                             <a class="nav-link navigation-text" href="#">About Us</a>
@@ -40,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link navigation-text" href="#" data-bs-toggle="modal"
                                 data-bs-target="#LoginModal">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navigation-text" href="#" data-bs-toggle="modal" data-bs-target="#feedbackModal">Feedback</a>
                         </li>
                     </ul>
                 </div>
@@ -78,26 +87,26 @@
     <section id="natural-yoga1">
         <div class="row text-center mt-3 font-styling   ">
             <div>
-                <h2 class="text-coloring">Your Natural Yoga</h2>
-                <h4 class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, officiis!</h4>
+                <h2 class="text-coloring">Transform Your Mind and Body with Our Yoga Classes</h2>
+                <h4 class="mt-4">Discover the Benefits of Yoga for Mind, Body, and Soul</h4>
             </div>
             <div class="row natural-yoga-row2 d-flex justify-content-around  mt-3">
                 <div class=" col-12 col-md-4  mb-4">
                     <img src="./img/mid-img@.webp " class="image-sizer" alt="">
                     <p class="mt-2">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim nemo natus impedit?
+                        Find inner peace and strength through guided meditation and breathwork in our beginner yoga classes.
                     </p>
                 </div>
                 <div class="col-12   col-md-4  mb-4">
                     <img src="./img/Mid-icon.png" class="image-sizer" alt="">
                     <p class="mt-2">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim nemo natus impedit?
+                        Experience the balance of mind and body with our holistic yoga sessions for all levels.
                     </p>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <img src="./img/she.png" class="image-sizer" alt="">
                     <p class="mt-2">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim nemo natus impedit?
+                        Introduce your little ones to mindfulness and calm with our special kids' yoga programs.
                     </p>
                 </div>
             </div>
@@ -106,130 +115,162 @@
     </section>
 
 
-    <section id="form-appointment">
-        <div class="row font-styling mt-3 ">
-            <div class="row text-center mt-3">
-                <h2 class="text-coloring">Form & Time Schedule</h2>
-                <h4 class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur nesciunt velit natus!
-                </h4>
-            </div>
-            <div class="row  d-flex justify-content-around ">
-                <div class=" col-md-4  col-12 ">
-                    <div class="row">
-                        <h4 class="mt-3 text-center apt-heading"> Align Your Body & Mind ! </h4>
+<!-- appointment  -->
+<section id="form-appointment" class="py-5 appointbkg" style="background-color: #fff5f8;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="text-coloring">Form & Time Schedule</h2>
+            <h4 class="mt-3">Start your wellness journey with us."</h4>
+            <h4 class="mt-4 apt-heading text-center" style="color: #ed5e93;">Align Your Body & Mind !</h4>
+        </div>
+
+        <div class="row justify-content-around">
+            <!-- Form Section -->
+            <div class="col-md-6 mb-4">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" placeholder="First name*" required class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Last name*" required class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="appointment-date" class="form-label">Choose a date</label>
+                            <input type="date" id="appointment-date" name="appointment-date" required class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="class-select">Choose Class</label>
+                            <select id="class-select" required class="form-select">
+                                <option value="">Choose Class</option>
+                                <option value="kundalini">Kundalini Meditation</option>
+                                <option value="surya">Surya Namaskar</option>
+                                <option value="children">Children Yoga</option>
+                                <option value="advanced">Advanced Meditation</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="tel" placeholder="Phone" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <textarea placeholder="Message (Optional)" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn mt-3" style="background-color: #ed5e93; color: white;">BOOK
+                                AN APPOINTMENT</button>
+                        </div>
                     </div>
+                </form>
+            </div>
 
-                    <form>
-                        <div class="row mt-5 ">
-                            <div class="col-md-6 text-center ">
-                                <input type="text" placeholder="First name*" required
-                                    class="form-input form-format-appointment" />
-                            </div>
-                            <div class="col-md-6 mx-auto text-center ">
-                                <input type="text" placeholder="Last name*" required
-                                    class="form-input form-format-appointment" />
-                            </div>
-                        </div>
-                        <div class="row mt-4 ">
-                            <div class="col-md-6  col-12 text-center">
-                                <input type="date" required class="form-input" />
-                            </div>
-                            <div class="col-md-6 mt-1 col-12 text-center">
-                                <select required>
-                                    <option value="">Choose Class</option>
-                                    <option value="kundalini">Kundalini Meditation</option>
-                                    <option value="surya">Surya Namaskar</option>
-                                    <option value="children">Children Yoga</option>
-                                    <option value="advanced">Advanced Meditation</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-md-6 col-12 text-center">
-                                <input type="tel" placeholder="Phone" class=" form-format-appointment form-input " />
-                            </div>
-
-                            <div class="col-md-6 col-12 text-center">
-                                <input type="email" placeholder="Email" class="form-input form-format-appointment" />
-                            </div>
-
-
-
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class=" col-md-4  col-12 text-center">
-                                <textarea placeholder="Message (Optional)"
-                                    class="form-input form-format-appointment text-area-s"></textarea>
-
-                            </div>
-                        </div>
-
-                        <div class="col-5 mx-auto text-center">
-                            <button type="submit" class="mt-3 btn-cus-apt ">BOOK AN APPOINTMENT</button>
-                        </div>
-
-                    </form>
+            <!-- Time Schedule -->
+            <div class="col-md-4 text-center">
+                <div class="mb-4">
+                    <h5 class="fw-bold">Weekdays</h5>
+                    <h6 class="fw-bold">06.00 AM - 07.00 AM</h6>
+                    <p>kundalini meditation beginners for Yoga</p>
+                    <h6 class="fw-bold">06.00 AM - 07.00 AM</h6>
+                    <p>Surya Namaskar & Advanced Meditation</p>
                 </div>
 
-                <div class="col-md-4 col-12 mb-5 text-center ">
-                    <div class="row ">
-                        <h5 class="mt-3 fw-bold">Weekdays</h5>
-                        <h6 class="fw-bolder">06.00 AM - 07.00 AM</h6>
-                        <p class="fw-semibolder">kundalini meditation beginners for Yoga</p>
-                        <br>
-                        <h6 class="fw-bolder">06.00 AM - 07.00 AM</h6>
-                        <p class="fw-semibolder">Surya Namaskar & Advanced Meditation</p>
-                    </div>
-                    <div class="row ">
-                        <h5 class="mt-3 fw-bold">Weekends</h5>
-                        <h6 class="fw-bolder">05.00 AM - 07.00 AM</h6>
-                        <p class="fw-semibolder">Weekly Pratice with children Yoga</p>
-                        <br>
-                        <h6 class="fw-bolder">08.00 AM - 10.00 AM</h6>
-                        <p class="fw-semibolder">Advanced Meditation & Healthy Recipes</p>
-                    </div>
+                <div>
+                    <h5 class="fw-bold">Weekends</h5>
+                    <h6 class="fw-bold">05.00 AM - 07.00 AM</h6>
+                    <p>Weekly Practice with children Yoga</p>
+                    <h6 class="fw-bold">08.00 AM - 10.00 AM</h6>
+                    <p>Advanced Meditation & Healthy Recipes</p>
+                </div>
+            </div>
+            
+            <!-- <div style="background-image: url('/backappoint.jpg'); width: 90%; height: 500px;"></div> -->
+        </div>
+    </div>
+</section>
+  
+
+<!-- last extra page -->
+<div class="middlepage1">
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Section -->
+                <div class="col-md-6 font-styling">
+                    <h2 class="text-primary headingmiddle">The Best Class for your Yoga Center</h2>
+                    <p class="text-muted">
+                        Discover inner peace and physical strength through guided yoga sessions tailored for all levels.
+
+                    </p>
+                    <ul class="list-unstyled" style="list-style-type:circle; padding-left: 20px;">
+                        <li class="mb-2">
+                            <i class="bi bi-lightning-fill text-primary me-2"></i>Always maintain calm and focus, even
+                            during challenges.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-lightning-fill text-primary me-2"></i>Gentle movements are guided smoothly
+                            and effectively.
+
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-lightning-fill text-primary me-2"></i>Every posture builds strength and
+                            grace with intention.
+
+                        </li>
+                    </ul>
+                    <p class="text-muted">
+                        Through consistent practice and a welcoming space, we help you find balance, clarity, and
+                        connection within.
+
+                    </p>
+                </div>
+
+                <!-- Image Section -->
+                <div class="col-md-6">
+                    <img src="./img/middlePageimg.jpg" alt="Yoga" class="img-fluid rounded shadow"
+                        height="300px" width="1000px" />
                 </div>
             </div>
         </div>
-
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</div>
 
 
+
+    
     <!-- Contact us -->
-    <section id="contact-section">
-        <div class="container font-styling">
-            <h2 class="text-center mt-3 contact-heading mb-5" class="contactUs">Contact Us</h2>
-            <div class="row mt-5">
-                <div class="col-md-6 col-6 mb-4">
-                    <form class="form-box">
+    <section class="contact-section "id="maincontact">
+        <div class="container">
+            <h1 class="text-center contact-heading mb-5 " class="contactUs">Contact Us</h1>
+            <div class="maindivrows maindivformrows">
+                <div class="col-md-6 mb-4">
+                    <form class="form-box formme">
                         <div class="mb-3">
-                            <label for="name" class="form-label ">Full Name</label>
-                            <input type="text" class="form-control form-input" id="name" placeholder="Your name"
-                                required>
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control form-input" id="name" placeholder="Your name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label form-in">Email address</label>
-                            <input type="email" class="form-control form-input" id="email" placeholder="name@gmail.com"
-                                required>
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@gmail.com" required>
                         </div>
                         <div class="mb-3">
-                            <label for="subject" class="form-label form-in">Subject</label>
-                            <input type="text" class="form-control form-input" id="subject" placeholder="Subject"
-                                required>
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
                         </div>
                         <div class="mb-3">
-                            <label for="message" class="form-label form-in">Message</label>
-                            <textarea class="form-control form-input" id="message" rows="4"
-                                placeholder="Write your message here..." required></textarea>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Write your message here..."
+                                required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-yoga" class="btn btn-submit">Send Message</button>
+                        <button type="submit" class="btn btn-yoga submitbtn" >Send Message</button>
                     </form>
                 </div>
-                <div class="col-md-6 col-6">
+                <div class="col-md-6 visitus" >
                     <h5 class="mb-3">Visit Us:</h5>
                     <p>
                     <h5>Cdac Yoga Center</h5>Raintree Marg, near Bharati Vidyapeeth
@@ -239,17 +280,17 @@
                     <p><strong>Phone:</strong> +91 98765 43210<br>
                         <strong>Email:</strong> contact@yogabliss.com
                     </p>
-                    <iframe
+                    <iframe class="bkgimg"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8596674029664!2d73.05167127466409!3d19.02590445354434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c24cce39457b%3A0x8bd69eab297890b0!2sCentre%20for%20Development%20of%20Advanced%20Computing%20(CDAC)!5e0!3m2!1sen!2sin!4v1746783123943!5m2!1sen!2sin"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
-                        allowfullscreen="" loading="lazy"></iframe>
+                        ></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-
+<!-- footer -->
 
 
 
@@ -284,11 +325,13 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
                         <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Company name
+                            <i class="fas fa-gem me-3"></i>Vayura
                         </h6>
                         <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
+                            Our yoga classes are designed for all skill levels, offering a peaceful space to stretch, breathe, and grow. Whether
+                            you're a beginner or experienced, each session helps you improve flexibility, reduce stress, and connect with your inner
+                            self.
+                           
                         </p>
                     </div>
 
@@ -300,16 +343,24 @@
                             Products
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Angular</a>
+                            <a href="#!" class="text-reset">Group Classes
+                            </a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">React</a>
+                            <a href="#!" class="text-reset">Private Sessions
+                            </a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Vue</a>
+                            <a href="#!" class="text-reset"></a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Laravel</a>
+                            <a href="#!" class="text-reset">Online Classes
+                            </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Wellness Workshops
+
+                            </a>
                         </p>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -332,12 +383,12 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fas fa-home me-3"></i> Cdac Mumbai</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            info@example.com
+                            contact@yogabliss.com
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-phone me-3"></i> +91 8408800508</p>
 
                     </div>
                 </div>
@@ -346,11 +397,87 @@
         </section>
 
 
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-4" style="background-color: rgba(207, 202, 202, 0.05);">
             &copy; 2025 Copyright:
             <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Vayura</a>
         </div>
     </footer>
+
+
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-center w-100"style="color: #ed5e93;", id="feedbackModalLabel">Yoga Center</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p class="text-center">Share your feedback to us</p>
+                <p class="text-center " style="color: #ed5e93;"><i class="fa-solid fa-clock"></i> It only takes few minutes!!</p>
+
+                <form id="feedbackForm">
+                    <div class="mb-3">
+                        <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-user"></i> Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-envelope"></i> Email
+                            Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-phone"></i> Phone
+                            No</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-face-smile"></i> How would you rate
+                            your experience?</label>
+                        <div class="d-flex justify-content-between emoji-rating">
+                            <label>
+                                <input type="radio" name="emoji" value="1"><span>😡</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="emoji" value="2"><span>😟</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="emoji" value="3"><span>😐</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="emoji" value="4"><span>😊</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="emoji" value="5"><span>😁</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-comment-dots"></i> Write your
+                            Suggestions:</label>
+                        <textarea class="form-control" id="comments" rows="3"
+                            placeholder="Enter your suggestions here"></textarea>
+                    </div>
+
+                    <!-- <button type="submit" class="btn btn- w-100">Submit</button> -->
+                    <button type="submit" class="btn w-100" style="background-color: #ed5e93; border: none; color: white;">
+                        Submit
+                    </button>
+                    <div class="text-success mt-3 text-center" id="responseMsg"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+  
 
 
     <!-- sign-in page  -->
@@ -537,6 +664,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

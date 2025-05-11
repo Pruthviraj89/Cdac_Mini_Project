@@ -71,8 +71,28 @@ body {
     border-right: none;
     outline: none;
 }
+/* last extra page */
+.middlepage1 {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #b0c4cd;
+}
+
+.headingmiddle {
+   color: #ed5e93;
+   
+}
+
+
 
 /* Contact us page */
+#maincontact {
+    padding: 60px 0;
+    background: url('../img/contactusbkg.jpg') 
+    no-repeat center center;
+    background-size: cover;
+    background-color: var(--primary-color);
+    min-height: 500px;
+}
 
 .contact-section {
     padding: 60px 0;
@@ -81,18 +101,20 @@ body {
 .contact-heading {
     color: var(--secondary-color);
 }
-
-
-
-
+.maindivformrows {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    /* flex-wrap: wrap; */
+}
 
 .form-control:focus {
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 0.2rem var(--primary-color);
 }
 
-.form-box {
-    background-color: var(--secondary-color);
+.formme{
+    background-color: rgba(156,173,181, 0.3);
     /* 0.0 = fully transparent, 1.0 = fully white */
     padding: 30px;
     border-radius: 10px;
@@ -101,8 +123,8 @@ body {
 
 
 .btn-yoga {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .btn-yoga:hover {
@@ -110,6 +132,12 @@ body {
    outline-color: var(--primary-color);
    background-color: var(--primary-color);
    color: var(--secondary-color);
+}
+.bkgimg {
+    border: 0;
+    width: 70%;
+    height: 250px;
+    border-radius: 10px;
 }
 
 iframe {
@@ -119,17 +147,15 @@ iframe {
     border-radius: 10px;
 }
 
-
-
 .image-sizer{
-    width: 200px;
+    width: 150px;
 }
 
 
 
 
 
-
+/* Appointment */
 
 .form-format-appointment{
     border-radius: .5rem;
@@ -156,8 +182,84 @@ iframe {
     height: 50px;
     resize: none;
 }
+.text-coloring {
+    color: #ed5e93;
+}
+
+.form-control,
+.form-select,
+textarea {
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* feadback form */
 
 
+.appointbkg{
+    padding: 60px 0;
+        background: url('../img/backappoint.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: 500px;
+}
+
+.emoji-rating label {
+    cursor: pointer;
+    font-size: 30px;
+}
 
 
+.emoji-rating input[type="radio"]:checked+span {
+    color: #28a745;
+
+    font-size: 45px;
+
+    transition: color 0.3s, font-size 0.3s;
+   
+}
+
+
+.emoji-rating label:hover span {
+    color: #28a745;
+   
+    font-size: 35px;
+   
+}
+
+/* footer */
+
+footer {
+    background-color: #a6a8b1;
+    color: #343a40;
+}
+
+footer .border-bottom {
+    background-color: #a9c9e8;
+}
+
+footer a.text-reset:hover {
+    color: #28a745 !important;
+    text-decoration: none;
+}
+
+footer h6 {
+    color: var(--secondary-color);
+}
+
+footer .fab {
+    color: #343a40;
+    transition: color 0.3s, transform 0.3s;
+}
+
+footer .fab:hover {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+footer .text-center.p-4 {
+    background-color: #dee2e6;
+    color: #495057;
+}
 
