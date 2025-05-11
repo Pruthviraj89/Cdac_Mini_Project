@@ -151,6 +151,47 @@ iframe {
     width: 150px;
 }
 
+/* team member */
+.mainteam {
+    background-color: #949597;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../img/teambackground.webp")
+    no-repeat center center;
+        background-size: cover;
+        background-color: var(--primary-color);
+        min-height: 500px;
+    
+}
+
+.team-section h2 {
+    font-weight: 700;
+}
+
+.team-member {
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.social-icons i {
+    font-size: 20px;
+    margin: 0 8px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: #007bff;
+}
 
 
 
@@ -231,7 +272,7 @@ textarea {
 /* footer */
 
 footer {
-    background-color: #a6a8b1;
+    background-color: #9a9ca0;
     color: #343a40;
 }
 
@@ -263,3 +304,33 @@ footer .text-center.p-4 {
     color: #495057;
 }
 
+/* trainers */
+
+.maintrainer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 0;
+        background: url('../img/trainerbackground2.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: fit-content;
+
+
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.social-icons i {
+    font-size: 1.2rem;
+    color: #f78ca2;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: #d94f70;
+}
+
+.letter-spacing {
+    letter-spacing: 0.2em;
+}
