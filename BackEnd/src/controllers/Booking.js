@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
-import { getConnectionObject } from "../config/DbConfig.js";
+import { createDbConnection } from "../DbConfig/dbconfig.js";
 
-const conn = getConnectionObject();
+const conn = createDbConnection();
 
 // Create Booking
 export function createBooking(req, res) {
