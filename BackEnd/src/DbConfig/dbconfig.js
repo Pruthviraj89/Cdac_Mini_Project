@@ -4,8 +4,9 @@ import{createConnection} from 'mysql2';
 var conn=createConnection({
     host:"localhost",
     user:"root",
-    password:"cdac",
-    database:"yoga"
+    password:"Pmane@89",
+    database:"yoga",
+    timezone:'local'
 });
 conn.connect((error)=>{
     if(error){

@@ -442,22 +442,7 @@
                         </div>
 
 
-                        <div class="row  ">
-                            <div class="col d-flex justify-content-center  ">
-                                <!-- Checkbox -->
-                                <div class="form-check ">
-                                    <input class="form-check-input " type="checkbox" value="" id="form2Example34"
-                                        checked />
-                                    <label class="form-check-label text-coloring" for="form2Example34 "> Remember me
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col ">
-                                <!-- Simple link -->
-                                <a href="#!" class="text-coloring ">Forgot password?</a>
-                            </div>
-                        </div>
+                        
 
                         <!-- Submit button -->
                         <div class="row">
@@ -564,19 +549,19 @@
     </div>
 
 
-    
+
     <script>
 
-          async function fetchData(){
+        async function fetchData() {
             try {
-               var response=await fetch("http://localhost:3500/Blog" );
-               console.log(response)
-               var data= await response.json();
-               console.log(data.length);
-                   var tbody =document.getElementById("tbody");
-                    for(i=0;i<data.length;i++){
-                        const tr = document.createElement("tr");
-                        tr.innerHTML=`<tr>
+                var response = await fetch("http://localhost:3500/Blog");
+                console.log(response)
+                var data = await response.json();
+                console.log(data.length);
+                var tbody = document.getElementById("tbody");
+                for (i = 0; i < data.length; i++) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `<tr>
                         <td>${data[i].id}</td>
                         <td>${data[i].name}</td>
                         <td>${data[i].post}</td>
@@ -589,10 +574,10 @@
                     </td>
                     </tr>`;
 
-                        tbody.appendChild(tr);
+                    tbody.appendChild(tr);
 
-                    }   
-                
+                }
+
             } catch (error) {
                 console.log(error);
             }

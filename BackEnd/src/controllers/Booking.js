@@ -1,13 +1,13 @@
 import { StatusCodes } from "http-status-codes";
-import { getConnectionObject } from "../config/DbConfig.js";
+import { createDbConnection } from "../DbConfig/dbconfig.js";
 
-const conn = getConnectionObject();
+const conn = createDbConnection();
 
 // Create Booking
 export function createBooking(req, res) {
     const data = req.body;
     const qry = `INSERT INTO bookings (user_id, course_id, booking_date, status, payment_status, session_start_date) 
-                 VALUES (${data.user_id}, ${data.course_id}, ${data.booking_date}, '${data.status}', '${data.payment_status}', ${data.session_start_date})`;
+                 VALUES (${data.user_id}, ${data.course_id}, '${data.booking_date}', '${data.status}', '${data.payment_status}', '${data.session_start_date}')`;
 
     conn.query(qry, (err, result) => {
         if (err) {
