@@ -9,7 +9,7 @@ export function addCourse(req,res)    {
 
     try {
         var data=req.body;
-        const qry= `INSERT INTO course (title, description, duration_weeks, level, price, teacher_id, teacher_name, teacher_phone, experience_year, specialization, location,schedule) VALUES ('${data.title}', '${data.description}', '${data.duration_weeks}', '${data.level}', '${data.price}', ${data.teacher_id}, '${data.teacher_name}', '${data.teacher_phone}',${data.experience_year}, '${data.specialization}', '${data.location}', '${data.schedule}')`;
+        const qry= `INSERT INTO course (title, description, duration_weeks, level, price, teacher_name, teacher_phone, experience_year, specialization, location,schedule) VALUES ('${data.title}', '${data.description}', '${data.duration_weeks}', '${data.level}', '${data.price}', '${data.teacher_name}', '${data.teacher_phone}',${data.experience_year}, '${data.specialization}', '${data.location}', '${data.schedule}')`;
 
         conn.query(qry,(err,result)=>{
             if(err){
@@ -18,7 +18,7 @@ export function addCourse(req,res)    {
 
             }else{
                 console.log({Query:result});
-                res.status(StatusCodes.OK).send(result[0]);
+                res.status(StatusCodes.CREATED).send(result[0]);
             }
         });
       
@@ -87,7 +87,6 @@ export function putCourse(req,res){
     const duration_weeks=req.body.duration_weeks;
     const level=req.body.level;
     const price=req.body.price;
-    const teacher_id=course_id;
     const teacher_name=req.body.teacher_name;
     const teacher_phone =req.body.teacher_phone;
     const experience_year =req.body.experience_year;
@@ -102,7 +101,6 @@ SET
   duration_weeks ='${duration_weeks}' ,
   level = '${level}',
   price = '${price}',
-  teacher_id = ${teacher_id},
   teacher_name = '${teacher_name}',
   teacher_phone ='${teacher_phone}' ,
   experience_year = ${experience_year},

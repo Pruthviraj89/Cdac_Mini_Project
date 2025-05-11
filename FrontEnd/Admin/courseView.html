@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        #alterTag {
+            display: none;
+        }
+
+
+        th {
+            border: dotted white;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        td {
+            
+            border: solid white;
+        }
+
+        .but {
+            font-size: .8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="NavBar"></div>
+
+    <div class="container ">
+        <div class="row mt-3 text-center">
+            <h2>Course Data</h2>
+        </div>
+        <div class="row mt-3">
+            <table border="0" cellpadding="0" cellspacing="0" class="table  table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>course_id</th>
+                        <th>Course Name</th>
+                        <th>weeks</th>
+                        <th>level</th>
+                        <th>price</th>
+                        <th>teacher_name</th>
+                        <th>Schedule</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+
+        async function fetchData() {
+            try {
+
+                var response = await fetch("http://localhost:8700/yoga/course");
+                console.log(response)
+                var data = await response.json();
+                console.log(data);
+
+                var tbody = document.getElementById("tbody");
+
+
+
+                for (i = 0; i < data.length; i++) {
+
+                    const tr = document.createElement("tr");
+
+                   tr.innerHTML = `
+<tr>
+  <td>${data[i].course_id}</td>
+  <td>${data[i].title}</td>
+  <td>${data[i].duration_weeks}</td>
+  <td>${data[i].level}</td>
+  <td>${data[i].price}</td>
+  <td>${data[i].teacher_name}</td>
+  <td>${data[i].schedule}</td>
+  <td class="text-center">
+    <div class="d-flex justify-content-center gap-2">
+      <button type="button" class="btn btn-info btn-sm but" onClick="updateRow(${data[i].course_id})">Update</button>
+      <button type="button" class="btn btn-danger btn-sm but" onClick="deleteRow(${data[i].course_id})">Delete</button>
+    </div>
+  </td>
+</tr>`;
+                    tbody.appendChild(tr);
+
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchData();
+
+
+        async function deleteRow(id) {
+            try {
+                var response = await fetch(`http://localhost:8700/yoga/course/${id}`, { method: "DELETE" });
+                alert("Deleted Successfully")
+                window.location.reload();
+            } catch (error) {
+                alert("message:", "Problem");
+            }
+
+        }
+
+        async function updateRow(id) {
+            window.location.href = "editCourse.html?courseId=" + id;
+        }
+
+        async function NavLoad() {
+            try {
+                await fetch('Nav.html')
+                    .then((res) => {
+                        return res.text()
+                    }).then((data) => {
+                        document.getElementById("NavBar").innerHTML = data
+                    });
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        }
+        NavLoad();
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import CourseRouter from './src/routes/CourseRoutes.js';
 import adminsRouter from './src/routes/AdminRoutes.js';
 
 import bookingsRouter from './src/routes/bookingsRoutes.js';
+import feebackRoutes from './src/routes/FeedbackRoutes.js';
 
 var app=express();
 var conn=createDbConnection();
@@ -22,6 +23,8 @@ app.get("/",(req,res)=>{
 
  app.use("/yoga/admin",adminsRouter);
  app.use("/yoga/bookings", bookingsRouter);
+
+ app.use("/yoga/feedback",feebackRoutes);
 
 
 

@@ -24,8 +24,13 @@
             <form id="post-form">
                 <div class="row">
                     <div class="mb-3 col-md-4 ">
+                        <label for="courseid" class="form-label">Id</label>
+                        <input type="text" class="form-control" placeholder="" id="courseid" disabled >
+                        <div class="invalid-feedback">Id is required.</div>
+                    </div>
+                    <div class="mb-3 col-md-4 ">
                         <label for="title" class="form-label">title</label>
-                        <input type="text" class="form-control" placeholder="Enter Title" id="title">
+                        <input type="text" class="form-control" placeholder="Enter Title" id="title" >
                         <div class="invalid-feedback">Title is required.</div>
                     </div>
                     <div class="mb-3 col-md-4">
@@ -90,42 +95,44 @@
     </div>
 
     <script>
+       async function fetchData(){
+        try {
+            const urlParams= new URLSearchParams(window.location.search);
+           var id= urlParams.get("courseId");
+           
+            var response=await fetch(`http://localhost:8700/yoga/course/${id}`,{method:"GET"});
+            var data=await response.json();
+            document.getElementById("courseid").value=id;
+            document.getElementById("title").value=data[0].title;
+            document.getElementById("description").value=data[0].description;
+            document.getElementById("duration_weeks").value=data[0].duration_weeks;
+            document.getElementById("level").value=data[0].level;
+            document.getElementById("price").value=data[0].price;
+            document.getElementById("teacherName").value=data[0].teacher_name;
+            document.getElementById("teacherPhone").value=data[0].teacher_phone;
+             document.getElementById("experience").value=data[0].experience_year;
+             document.getElementById("specialization").value=data[0].specialization;
+             document.getElementById("location").value=data[0].location;
+             document.getElementById("schedule").value=data[0].schedule;
 
-        var postForm = document.getElementById("post-form");
-       
-
-             postForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    console.log("clicked");
-
-    // Get form elements
-    const fields = [
-      "title", "description", "duration_weeks", "level", "price",
-      "teacherName", "teacherPhone", "experience", "specialization",
-      "location", "schedule"
-    ];
-
-    let valid = true;
-
-    fields.forEach(id => {
-      const input = document.getElementById(id);
-      if (!input.value.trim()) {
-        input.classList.add("is-invalid");
-        valid = false;
-      } else {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      }
-    });
-
-    if (!valid) {
-      // Scroll to the first invalid field
-      document.querySelector(".is-invalid").scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-
-    // Build data object
-    const data = {
+            if(response.status===200){
+               
+                console.log(data);
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+        }
+        fetchData(); 
+        
+        var postForm=document.getElementById("post-form");
+        postForm.addEventListener("submit",async (event)=>{
+            try {
+                 const urlParams= new URLSearchParams(window.location.search);
+                event.preventDefault();
+               const data = {
+    course_id:urlParams.get("courseId"),
       title: document.getElementById("title").value.trim(),
       description: document.getElementById("description").value.trim(),
       duration_weeks: document.getElementById("duration_weeks").value.trim(),
@@ -138,50 +145,42 @@
       location: document.getElementById("location").value.trim(),
       schedule: document.getElementById("schedule").value.trim()
     };
+        console.log(data);
+                var response=await fetch(`http://localhost:8700/yoga/course/${data.course_id}`,{
+                    method: "PUT",
+                    body:JSON.stringify(data),
+                    headers:{
+                        'Content-type': 'application/json; charset=UTF-8',
+                    }
+                });
 
-    console.log("Validated data:", data);
+                if(response.status===200){
+                    window.location.href="courseView.html";
 
-    try {
-      const response = await fetch('http://localhost:8700/yoga/course', {
-        method: "POST",
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.status === 201) {
-        document.getElementById("alterTag").style.display = "block";
-
-        setTimeout(() => {
-          document.getElementById("alterTag").style.display = "none";
-          window.location.href = 'courseView.html'; // 🔁 Redirect after showing alert
-        }, 2000);
-      } else {
-        console.log("Failed to insert data.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  });
-
-
-
-
-
-        async function NavLoad() {
-            try {
-                await fetch('Nav.html')
-                    .then((res) => {
-                        return res.text()
-                    }).then((data) => {
-                        document.getElementById("NavBar").innerHTML = data
-                    });
+                }
 
             } catch (error) {
                 console.log(error);
+                
             }
 
+
+        })
+        
+
+
+        async function NavLoad(){
+            try {
+                await fetch('Nav.html')
+                .then((res)=>{
+                   return res.text()
+                }).then((data)=>{ 
+                    document.getElementById("NavBar").innerHTML=data});
+                
+            } catch (error) {
+                console.log(error);
+            }
+        
 
         }
         NavLoad();

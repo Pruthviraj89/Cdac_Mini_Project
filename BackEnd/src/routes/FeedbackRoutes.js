@@ -1,0 +1,11 @@
+import express from 'express';
+import { addFeedback, getFeedback } from '../controllers/feebackController.js';
+
+
+
+const feebackRoutes=express.Router();
+
+feebackRoutes.get("/",getFeedback);
+feebackRoutes.post("/",addFeedback);
+
+export default feebackRoutes;
