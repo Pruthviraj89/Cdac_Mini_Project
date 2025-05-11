@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
 
  app.use("/yoga/course",CourseRouter);
 
- app.use("yoga/admin",adminsRouter);
+ app.use("/yoga/admin",adminsRouter);
 
 
 

@@ -1,15 +1,18 @@
 import { StatusCodes } from "http-status-codes";
 import { createDbConnection } from "../DbConfig/dbconfig.js";
-
+import { compareSync, hashSync } from "bcrypt";
+import jwt from 'jsonwebtoken';
 
 var conn=createDbConnection();
 
 
-export function addUsers(req,res)    {
+export function addUsers(req,res)  {
 
     try {
         var data=req.body;
-        const qry= `INSERT INTO user (name, email, password, phone, address) VALUES ('${data.name}', '${data.email}', '${data.password}', ${data.phone}, '${data.address}')`;
+        var encryptedpass=hashSync(data.password,10);
+        data.password="";
+        const qry= `INSERT INTO user (name, email, password, phone, address) VALUES ('${data.name}', '${data.email}', '${encryptedpass}', ${data.phone}, '${data.address}')`;
 
         conn.query(qry,(err,result)=>{
             if(err){
@@ -18,7 +21,7 @@ export function addUsers(req,res)    {
 
             }else{
                 console.log({Query:result});
-                res.status(StatusCodes.OK).send(result[0]);
+                res.status(StatusCodes.OK).send({msg:"registered successfully"});
             }
         });
       
@@ -28,6 +31,35 @@ export function addUsers(req,res)    {
   
 
 
+}
+
+export function loginUser(req,res){
+    try {
+        const requestData= req.body;
+        var qry=`select * from user where email='${requestData.email}'`;
+        conn.query(qry,(error,result)=>{
+            if(error){
+                console.log(error);
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({message:"Something went wrong"});
+            }else{
+                if(result.length===0){
+                    res.status(StatusCodes.NO_CONTENT).send({message:`Records are empty`});
+                   }else{
+                        if(compareSync(requestData.password,result[0].password)){
+                            const token=jwt.sign({user_id:result[0].user_id},"hello123");
+                            requestData.password="";
+                            res.status(StatusCodes.OK).send({message:"login Successful",token,user_id:result[0].user_id});
+                        }else{
+                        res.status(StatusCodes.BAD_REQUEST).send({message:"USername or password is Invalid"});
+                    }
+                   }
+            }
+        })
+
+    } catch (error) {
+        console.log({m:error});
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({message:"Something went wrong"});
+    }
 }
 
 
