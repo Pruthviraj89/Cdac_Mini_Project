@@ -19,34 +19,60 @@ export function createBooking(req, res) {
     });
 }
 
-// Get All Bookings
 export function getAllBookings(req, res) {
-    const qry=`SELECT * FROM bookings`;
+    const qry = `SELECT * FROM bookings`;
     conn.query(qry, (err, result) => {
         if (err) {
             console.log(err);
-            res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: "Fetching failed" });
+            res.status(500).send({ message: "Fetching failed" });
         } else {
-            res.status(StatusCodes.OK).send(result);
+            // Format MySQL date to local 'YYYY-MM-DD' (avoiding UTC offset)
+            const formatDate = (dateStr) => {
+                const date = new Date(dateStr);
+                const offset = date.getTimezoneOffset();
+                const localDate = new Date(date.getTime() - offset * 60000);
+                return localDate.toISOString().split('T')[0];
+            };
+
+            const formattedResult = result.map(row => ({
+                ...row,
+                booking_date: formatDate(row.booking_date),
+                session_start_date: formatDate(row.session_start_date)
+            }));
+
+            res.status(200).send(formattedResult);
         }
     });
 }
 
+
 // Get Booking by ID
 export function getBookingById(req, res) {
     const id = parseInt(req.params.id);
-    const qry= `SELECT * FROM bookings WHERE booking_id = ${id}`;
-    conn.query(qry , (err, result) => {
+    const qry = `SELECT * FROM bookings WHERE booking_id = ${id}`;
+    conn.query(qry, (err, result) => {
         if (err) {
             console.log(err);
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: "Error fetching booking" });
         } else if (result.length === 0) {
             res.status(StatusCodes.NOT_FOUND).send({ message: "Booking not found" });
         } else {
-            res.status(StatusCodes.OK).send(result[0]);
+            const formatDate = (dateStr) => {
+                const date = new Date(dateStr);
+                const offset = date.getTimezoneOffset();
+                const localDate = new Date(date.getTime() - offset * 60000);
+                return localDate.toISOString().split('T')[0];
+            };
+
+            const booking = result[0];
+            booking.booking_date = formatDate(booking.booking_date);
+            booking.session_start_date = formatDate(booking.session_start_date);
+
+            res.status(StatusCodes.OK).send(booking);
         }
     });
 }
+
 
 // Update Booking
 export function updateBooking(req, res) {

@@ -21,7 +21,7 @@ export function addUsers(req,res)  {
 
             }else{
                 console.log({Query:result});
-                res.status(StatusCodes.OK).send({msg:"registered successfully"});
+                res.status(StatusCodes.CREATED).send({msg:"registered successfully"});
             }
         });
       

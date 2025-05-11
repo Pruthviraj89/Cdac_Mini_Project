@@ -428,7 +428,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="loginForm">
 
                         <div data-mdb-input-init class="form-outline mb-4">
                             <input type="email" id="form2Example1" class="form-control form-input"
@@ -461,7 +461,7 @@
 
                         <!-- Submit button -->
                         <div class="row">
-                            <button type="button" class="btn  btn-block mb-4 btn-custom">Sign
+                            <button type="submit" class="btn  btn-block mb-4 btn-custom">Sign
                                 in</button>
                         </div>
 
@@ -488,6 +488,8 @@
         </div>
     </div>
 
+
+
     <!-- sign-up page  -->
     <div class=" modal fade" id="Register-modal" tabindex="-1" aria-labelledby="Register-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -497,18 +499,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="font-styling ">
+                    <form id="signupForm" class="font-styling ">
                         <div class="row mb-4">
                             <div class="col">
                                 <div data-mdb-input-init class="form-outline">
-                                    <input type="text" id="form3Example1" class="form-control form-input"
+                                    <input type="text" id="signupfirstName" class="form-control form-input"
                                         placeholder="First Name" />
 
                                 </div>
                             </div>
                             <div class="col">
                                 <div data-mdb-input-init class="form-outline">
-                                    <input type="text" id="form3Example2" class="form-control form-input"
+                                    <input type="text" id="signuplastName" class="form-control form-input"
                                         placeholder=" Last Name" />
 
                                 </div>
@@ -516,26 +518,27 @@
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form3Example3" class="form-control form-input"
+                            <input type="email" id="signupemail" class="form-control form-input"
                                 placeholder="Enter Email" />
 
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form3Example4" class="form-control form-input"
+                            <input type="password" id="signuppassword" class="form-control form-input"
                                 placeholder="Enter Password" />
 
                         </div>
 
                         <div class="form-check d-flex justify-content-center mb-4">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                            <input class="form-check-input me-2" type="checkbox" value="" id="signupnewsletter"
+                                checked />
                             <label class="form-check-label" for="form2Example33">
                                 Subscribe to our newsletter
                             </label>
                         </div>
 
                         <div class="row ">
-                            <button data-mdb-ripple-init type="button" class="btn  btn-block mb-4 btn-custom">Sign
+                            <button data-mdb-ripple-init type="submit" class="btn  btn-block mb-4 btn-custom">Sign
                                 up</button>
                         </div>
 
@@ -564,40 +567,149 @@
     </div>
 
 
-    
+
     <script>
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            console.log("ala")
 
-          async function fetchData(){
+            const useremail = document.getElementById('form2Example1').value;
+            const password = document.getElementById('form2Example2').value;
+
             try {
-               var response=await fetch("http://localhost:3500/Blog" );
-               console.log(response)
-               var data= await response.json();
-               console.log(data.length);
-                   var tbody =document.getElementById("tbody");
-                    for(i=0;i<data.length;i++){
-                        const tr = document.createElement("tr");
-                        tr.innerHTML=`<tr>
-                        <td>${data[i].id}</td>
-                        <td>${data[i].name}</td>
-                        <td>${data[i].post}</td>
-                         <td>
-                        <div class="row d-flex justify-content-around">
-                            <button type="button" class="btn btn-info  col-3  btn-sm but" onClick="updateRow(${data[i].id})">Update</button>
-                            <button type="button" class="btn btn-danger  col-3 btn-sm but" onClick="deleteRow(${data[i].id})">Delete</button>
-                            
-                        </div>
-                    </td>
-                    </tr>`;
+                const res = await fetch('http://localhost:8700/yoga/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ useremail, password })
+                });
 
-                        tbody.appendChild(tr);
+                const data = await res.json();
 
-                    }   
-                
-            } catch (error) {
-                console.log(error);
+                if (res.status === 200) {
+                    localStorage.setItem('token', data.token); // Save token
+                    alert('Login successful!');
+                    window.location.href = 'Home.html'; // or any dashboard page
+                } else {
+                    document.getElementById('message').innerText = data.message || 'Login failed';
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('message').innerText = 'Server error';
             }
-        }
-        fetchData();
+        });
+
+        const signupForm = document.getElementById("signupForm");
+
+        signupForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Get input fields
+            const firstNameEl = document.getElementById("signupfirstName");
+            const lastNameEl = document.getElementById("signuplastName");
+            const emailEl = document.getElementById("signupemail");
+            const passwordEl = document.getElementById("signuppassword");
+
+            // Trimmed values
+            const firstName = firstNameEl.value.trim();
+            const lastName = lastNameEl.value.trim();
+            const email = emailEl.value.trim();
+            const password = passwordEl.value;
+
+            // Regex patterns
+            const nameRegex = /^[A-Za-z]{2,30}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
+
+            // Clear any previous custom messages
+            firstNameEl.setCustomValidity("");
+            lastNameEl.setCustomValidity("");
+            emailEl.setCustomValidity("");
+            passwordEl.setCustomValidity("");
+
+            // Validation checks
+            if (!firstName) {
+                firstNameEl.setCustomValidity("Please enter your first name.");
+                firstNameEl.reportValidity();
+                return;
+            }
+            if (!nameRegex.test(firstName)) {
+                firstNameEl.setCustomValidity("First name must be 2–30 letters only.");
+                firstNameEl.reportValidity();
+                return;
+            }
+
+            if (!lastName) {
+                lastNameEl.setCustomValidity("Please enter your last name.");
+                lastNameEl.reportValidity();
+                return;
+            }
+            if (!nameRegex.test(lastName)) {
+                lastNameEl.setCustomValidity("Last name must be 2–30 letters only.");
+                lastNameEl.reportValidity();
+                return;
+            }
+
+            if (!email) {
+                emailEl.setCustomValidity("Please enter your email.");
+                emailEl.reportValidity();
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                emailEl.setCustomValidity("Enter a valid email (e.g. name@example.com).");
+                emailEl.reportValidity();
+                return;
+            }
+
+            if (!password) {
+                passwordEl.setCustomValidity("Please enter your password.");
+                passwordEl.reportValidity();
+                return;
+            }
+            if (!passwordRegex.test(password)) {
+                passwordEl.setCustomValidity("Password must have 1 capital letter, 1 number & be 6+ characters.");
+                passwordEl.reportValidity();
+                return;
+            }
+
+            // ✅ All validations passed — send request
+            const name = `${firstName} ${lastName}`;
+
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById("message").innerText = "Invalid email format.";
+                return;
+            }
+
+
+            try {
+                const response = await fetch("http://localhost:8700/yoga/user", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        phone: 45666,
+                        address: "dfasdvfdv"
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.status === 201) {
+                    alert("Signup successful!");
+                    window.location.href = "Home.html"; // Redirect to login
+                } else {
+                    document.getElementById("message").innerText = data.message || "Signup failed";
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById("message").innerText = "Server error";
+            }
+        });
+
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"

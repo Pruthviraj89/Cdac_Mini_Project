@@ -195,4 +195,48 @@ iframe {
 }
 
 
+/* AdminSignUp */
+
+#adminsignin {
+  background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.adminlogin-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h2 {
+  font-weight: bold;
+  color: #4b0082;
+}
+
+.login-btn {
+  background-color: #4b0082;
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #3a0066;
+}
+
+
+/* AdminSignUp */
+#adminsignup {
+  background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.admincard {
+  border-radius: 1rem;
+}
 
