@@ -5,6 +5,7 @@ import YogaRouter from './src/routes/YogaRoutes.js';
 import CourseRouter from './src/routes/CourseRoutes.js';
 import adminsRouter from './src/routes/AdminRoutes.js';
 
+import bookingsRouter from './src/routes/bookingsRoutes.js';
 
 var app=express();
 var conn=createDbConnection();
@@ -20,6 +21,7 @@ app.get("/",(req,res)=>{
  app.use("/yoga/course",CourseRouter);
 
  app.use("/yoga/admin",adminsRouter);
+ app.use("/bookings", bookingsRouter);
 
 
 
