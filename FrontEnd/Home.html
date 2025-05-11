@@ -552,38 +552,7 @@
 
     <script>
 
-        async function fetchData() {
-            try {
-                var response = await fetch("http://localhost:3500/Blog");
-                console.log(response)
-                var data = await response.json();
-                console.log(data.length);
-                var tbody = document.getElementById("tbody");
-                for (i = 0; i < data.length; i++) {
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `<tr>
-                        <td>${data[i].id}</td>
-                        <td>${data[i].name}</td>
-                        <td>${data[i].post}</td>
-                         <td>
-                        <div class="row d-flex justify-content-around">
-                            <button type="button" class="btn btn-info  col-3  btn-sm but" onClick="updateRow(${data[i].id})">Update</button>
-                            <button type="button" class="btn btn-danger  col-3 btn-sm but" onClick="deleteRow(${data[i].id})">Delete</button>
-                            
-                        </div>
-                    </td>
-                    </tr>`;
-
-                    tbody.appendChild(tr);
-
-                }
-
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetchData();
-
+      
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
