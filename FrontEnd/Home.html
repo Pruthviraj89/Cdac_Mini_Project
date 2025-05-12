@@ -604,21 +604,21 @@
                         <div class="mb-3">
                             <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-user"></i>
                                 Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="feedname" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-envelope"></i>
                                 Email
                                 Address</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="feedemail" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="phone" class="form-label " style="color: #ed5e93;"><i
                                     class="fa-solid fa-phone"></i> Phone
                                 No</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+                            <input type="tel" class="form-control" id="feedphone" placeholder="Enter your phone number"
                                 required>
                         </div>
 
@@ -649,7 +649,7 @@
                             <label class="form-label " style="color: #ed5e93;"><i class="fa-solid fa-comment-dots"></i>
                                 Write your
                                 Suggestions:</label>
-                            <textarea class="form-control" id="comments" rows="3"
+                            <textarea class="form-control" id="feedcomments" rows="3"
                                 placeholder="Enter your suggestions here"></textarea>
                         </div>
 
@@ -849,10 +849,10 @@
 
             form.addEventListener('submit', async (event) => {
                 if (!form.checkValidity()) {
-                    event.preventDefault(); // stop form submission
+                    event.preventDefault();
                     event.stopPropagation();
                 } else {
-                    event.preventDefault(); // ✅ Must prevent even on valid submit
+                    event.preventDefault();
 
                     const email = document.getElementById("signInEmail").value.trim();
                     const pass = document.getElementById("signInPass").value.trim();
@@ -877,21 +877,21 @@
                             document.cookie = `token=${result.token}; path=/; max-age=${60 * 60 * 24}`;
                             document.cookie = `user_id=${result.user_id}; path=/; max-age=${60 * 60 * 24}`;
 
-                           
+
 
                             const response_userdata = await fetch(`http://localhost:8700/yoga/user/${result.user_id}`);
 
-                                const user_data=response_userdata.json();
-                                
+                            const user_data = response_userdata.json();
 
-                            
+
+
 
 
                             console.log(user_data);
-                            document.getElementById("Bemail").innerHTML=email;
+                            document.getElementById("Bemail").innerHTML = email;
 
 
-                             // Redirect to home
+                            // Redirect to home
                             window.location.href = "Home.html";
 
                         }
@@ -937,82 +937,130 @@
         appointmentform.addEventListener('submit', async (event) => {
 
             const token = getCookie("token");
-const userId = getCookie("user_id");
+            const userId = getCookie("user_id");
 
-if (!token || !userId) {
-  alert("Please login first to continue.");
-  window.location.href = "index.html";
-}else{
-
-
-            event.preventDefault(); // important to prevent form reload
-
-            var BfirstName = document.getElementById("BfirstName").value;
-            var BlastName = document.getElementById("BlastName").value;
-            var fullName = firstName + " " + lastName;
-            var dateValue = document.getElementById("appointment-date").value;
-            var selectedClass = document.getElementById("class-select").value;
-            var pass = document.getElementById("Bphone").value;
-            var Bemail = document.getElementById("Bemail").value;
-            var Bmessage = document.getElementById("Bmessage").value;
+            if (!token || !userId) {
+                alert("Please login first to continue.");
+                window.location.href = "index.html";
+            } else {
 
 
-            try {
-                const response = await fetch(`http://localhost:8700/yoga/course/title/'${selectedClass}'`);
+                event.preventDefault(); // important to prevent form reload
 
-                if (response.status === 200) {
-                    var tempdata = await response.json();
+                var BfirstName = document.getElementById("BfirstName").value;
+                var BlastName = document.getElementById("BlastName").value;
+                var fullName = firstName + " " + lastName;
+                var dateValue = document.getElementById("appointment-date").value;
+                var selectedClass = document.getElementById("class-select").value;
+                var pass = document.getElementById("Bphone").value;
+                var Bemail = document.getElementById("Bemail").value;
+                var Bmessage = document.getElementById("Bmessage").value;
 
-                    console.log(tempdata[0].course_id);
 
-                    
-            var bookdata={
-               user_id:userId,
-                course_id:tempdata[0].course_id,
-                booking_date:dateValue,
-                status:"Pending",
-                payment_status:"pending",
-            }
-            console.log(bookdata);
-                    // window.location.href = 'Home.html';
-                } else {
-                    alert("Server Error! Try again.");
+                try {
+                    const response = await fetch(`http://localhost:8700/yoga/course/title/'${selectedClass}'`);
+
+                    if (response.status === 200) {
+                        var tempdata = await response.json();
+
+                        console.log(tempdata[0].course_id);
+
+
+                        var bookdata = {
+                            user_id: userId,
+                            course_id: tempdata[0].course_id,
+                            booking_date: dateValue,
+                            status: "Pending",
+                            payment_status: "pending",
+                        }
+                        console.log(bookdata);
+                        // window.location.href = 'Home.html';
+                    } else {
+                        alert("Server Error! Try again.");
+                    }
+
+                    const responseBooking = await fetch('http://localhost:8700/yoga/bookings', {
+                        method: "POST",
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify(bookdata),
+                    });
+
+                    if (response.status === 200) {
+                        alert("Your Appointment Is Booked   ")
+                        // Reset validation state
+                    } else {
+                        alert("Server Error! Try again.");
+                    }
+
+
+
+
+
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Network error! Please try again.");
                 }
 
-                 const responseBooking = await fetch('http://localhost:8700/yoga/bookings', {
-                            method: "POST",
-                            headers: {
-                                'Content-type': 'application/json; charset=UTF-8',
-                            },
-                            body: JSON.stringify(bookdata),
-                        });
 
-                        if (response.status === 200) {
-                            alert("Your Appointment Is Booked   ")
-                             // Reset validation state
-                        } else {
-                            alert("Server Error! Try again.");
-                        }
-
-
-
-
-
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Network error! Please try again.");
             }
+        })
 
 
-        }})
-
-    
         //   document.querySelectorAll('.modal').forEach(modal => {
         //   modal.addEventListener('hidden.bs.modal', () => {
         //     document.body.classList.remove('modal-open');
         //     document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
         //   });
         // });
+
+        document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const feedname = document.getElementById("feedname").value.trim();
+            const feedemail = document.getElementById("feedemail").value.trim();
+            const feedphone = document.getElementById("feedphone").value.trim();
+            const emoji_value = document.querySelector('input[name="emoji"]:checked')?.value;
+            const comments = document.getElementById("feedcomments").value.trim();
+
+            if (!emoji_value) {
+                alert("Please rate your experience.");
+                return;
+            }
+
+            const feedData = {
+                name: feedname,
+                email: feedemail,
+                phone: feedphone,
+                rating: emoji_value,
+                suggestion: comments
+            };
+
+            try {
+                const feedbackresponse = await fetch('http://localhost:8700/yoga/feedback', {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                    body: JSON.stringify(feedData),
+                });
+
+                if (feedbackresponse.status === 201) {
+                    const feedresponsedata = await feedbackresponse.json();
+
+                    alert("Thank you for your feedback!");
+
+                    document.getElementById("feedbackForm").reset();
+                    window.location.href = 'Home.html';
+                } else {
+                    alert("Server error! Please try again.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Network error! Please try again.");
+            }
+        });
 
     </script>
 
