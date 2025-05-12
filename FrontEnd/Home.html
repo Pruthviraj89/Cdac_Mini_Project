@@ -247,7 +247,7 @@
                                     <option value="Hatha Yoga Basics">Hatha Yoga Basics</option>
                                     <option value="Vinyasa Flow Advanced">Vinyasa Flow Advanced</option>
                                     <option value="Restorative Yoga">Restorative Yoga</option>
-                                    <option value="Power Yoga for Weight Loss">Power Yoga for Weight Loss</option>
+                                    <option value="Advanced Ashtanga Yoga">Advanced Ashtanga Yoga</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -933,80 +933,84 @@
             registerModal.hide();
         });
 
-        var appointmentform = document.getElementById("appointmentform");
-        appointmentform.addEventListener('submit', async (event) => {
+      document.getElementById("appointmentform").addEventListener('submit', async (event) => {
+  event.preventDefault();
 
-            const token = getCookie("token");
-            const userId = getCookie("user_id");
+  const token = getCookie("token");
+  const userId = getCookie("user_id");
 
-            if (!token || !userId) {
-                alert("Please login first to continue.");
-                window.location.href = "index.html";
-            } else {
+  if (!token || !userId) {
+    alert("Please login first to continue.");
+    window.location.href = "Home.html";
+    return;
+  }
 
+  // Get form values
+  const BfirstName = document.getElementById("BfirstName").value.trim();
+  const BlastName = document.getElementById("BlastName").value.trim();
+  const fullName = BfirstName + " " + BlastName;
 
-                event.preventDefault(); // important to prevent form reload
+  const dateValue = document.getElementById("appointment-date").value;
+  const selectedClass = document.getElementById("class-select").value;
+  const phone = document.getElementById("Bphone").value.trim();
+  const Bemail = document.getElementById("Bemail").value.trim();
+  const Bmessage = document.getElementById("Bmessage").value.trim();
 
-                var BfirstName = document.getElementById("BfirstName").value;
-                var BlastName = document.getElementById("BlastName").value;
-                var fullName = firstName + " " + lastName;
-                var dateValue = document.getElementById("appointment-date").value;
-                var selectedClass = document.getElementById("class-select").value;
-                var pass = document.getElementById("Bphone").value;
-                var Bemail = document.getElementById("Bemail").value;
-                var Bmessage = document.getElementById("Bmessage").value;
+  if (!selectedClass || !dateValue) {
+    alert("Please fill in all required fields.");
+    return;
+  }
 
+  try {
+   
+    const response = await fetch(`http://localhost:8700/yoga/course/title/${selectedClass}`);
 
-                try {
-                    const response = await fetch(`http://localhost:8700/yoga/course/title/'${selectedClass}'`);
+    if (response.ok) {
+      const tempdata = await response.json();
 
-                    if (response.status === 200) {
-                        var tempdata = await response.json();
+      if (!tempdata || tempdata.length === 0) {
+        alert("No course found for selected class.");
+        return;
+      }
 
-                        console.log(tempdata[0].course_id);
+      const courseId = tempdata[0].course_id;
 
+      // Build booking object
+      const bookdata = {
+        user_id: parseInt(userId),
+        course_id: courseId,
+        booking_date: dateValue,
+        status: "Pending",
+        payment_status: "pending"
+      };
 
-                        var bookdata = {
-                            user_id: userId,
-                            course_id: tempdata[0].course_id,
-                            booking_date: dateValue,
-                            status: "Pending",
-                            payment_status: "pending",
-                        }
-                        console.log(bookdata);
-                        // window.location.href = 'Home.html';
-                    } else {
-                        alert("Server Error! Try again.");
-                    }
+      console.log("Booking Data:", bookdata);
 
-                    const responseBooking = await fetch('http://localhost:8700/yoga/bookings', {
-                        method: "POST",
-                        headers: {
-                            'Content-type': 'application/json; charset=UTF-8',
-                        },
-                        body: JSON.stringify(bookdata),
-                    });
+      // Send booking
+      const bookingResponse = await fetch('http://localhost:8700/yoga/bookings', {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(bookdata),
+      });
 
-                    if (response.status === 200) {
-                        alert("Your Appointment Is Booked   ")
-                        // Reset validation state
-                    } else {
-                        alert("Server Error! Try again.");
-                    }
+      if (bookingResponse.status === 201 || bookingResponse.status === 200) {
+        alert("Your appointment has been booked!");
+        window.location.href = 'Home.html';
+      } else {
+        alert("Booking failed. Try again later.");
+      }
 
+    } else {
+      alert("Server Error while fetching course. Try again.");
+    }
 
-
-
-
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("Network error! Please try again.");
-                }
-
-
-            }
-        })
-
+  } catch (error) {
+    console.error("Booking Error:", error);
+    alert("Network error! Please try again.");
+  }
+});
 
         //   document.querySelectorAll('.modal').forEach(modal => {
         //   modal.addEventListener('hidden.bs.modal', () => {

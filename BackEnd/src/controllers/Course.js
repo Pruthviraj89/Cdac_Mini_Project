@@ -59,7 +59,7 @@ export function getCourseBytitle(req,res){
     try {
         var title=req.params.title;
 
-        var qry=`select * from course where title=${title}`;
+        var qry=`select * from course where title='${title}'`;
         conn.query(qry,(error,result)=>{
             if(error){
                 console.log(error);
@@ -68,6 +68,7 @@ export function getCourseBytitle(req,res){
                 if(result.length===0){
                     res.status(StatusCodes.NO_CONTENT).send({message:`Records are empty`});
                    }else{
+                    console.log(result);
                     res.status(StatusCodes.OK).send(result);
                    }
             }
