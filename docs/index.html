@@ -826,7 +826,7 @@
                         if (response.status === 200) {
                             alert("Registration Sucessed ! Please Login");
                             console.log("successful regis")
-                            window.location.href = 'Home.html';
+                            window.location.href = 'index.html';
                             form.reset(); // Clear form fields
                             form.classList.remove("was-validated"); // Reset validation state
                         } else {
@@ -892,7 +892,7 @@
 
 
                             // Redirect to home
-                            window.location.href = "Home.html";
+                            window.location.href = "index.html";
 
                         }
                         else {
@@ -941,7 +941,7 @@
 
   if (!token || !userId) {
     alert("Please login first to continue.");
-    window.location.href = "Home.html";
+    window.location.href = "index.html";
     return;
   }
 
@@ -997,7 +997,7 @@
 
       if (bookingResponse.status === 201 || bookingResponse.status === 200) {
         alert("Your appointment has been booked!");
-        window.location.href = 'Home.html';
+        window.location.href = 'index.html';
       } else {
         alert("Booking failed. Try again later.");
       }
@@ -1056,7 +1056,7 @@
                     alert("Thank you for your feedback!");
 
                     document.getElementById("feedbackForm").reset();
-                    window.location.href = 'Home.html';
+                    window.location.href = 'index.html';
                 } else {
                     alert("Server error! Please try again.");
                 }
