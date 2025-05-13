@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+
+:root {
+    --primary-color: #fff6f9;
+    --secondary-color: #ed5e93;
+    --warning-color: #fbf4d7;
+    --info-color: #d8daff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+.font-styling {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: 0;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.navigate-links {
+    margin-right: 10rem;
+}
+.nav-icon{
+    width: 50px;
+    font-weight: bold;
+}
+
+
+.navigate {
+    border: solid red;
+
+}
+.navigation-text:hover{
+    color: var(--secondary-color);
+}
+.text-coloring{
+    color: var(--secondary-color);
+    
+}
+
+.btn-custom{
+    width:  8rem;
+    margin-top: .5rem;
+    margin-left: 11rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-custom:active{
+    outline-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+.modal-bg {
+    background-color: var(--primary-color);
+}
+
+.form-input {
+    background-color: var(--primary-color);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+/* last extra page */
+.middlepage1 {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #b0c4cd;
+}
+
+.headingmiddle {
+   color: #ed5e93;
+   
+}
+
+
+
+/* Contact us page */
+#maincontact {
+    padding: 60px 0;
+    background: url('../img/contactusbkg.jpg') 
+    no-repeat center center;
+    background-size: cover;
+    background-color: var(--primary-color);
+    min-height: 500px;
+}
+
+.contact-section {
+    padding: 60px 0;
+}
+
+.contact-heading {
+    color: var(--secondary-color);
+}
+.maindivformrows {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    /* flex-wrap: wrap; */
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem var(--primary-color);
+}
+
+.formme{
+    background-color: rgba(156,173,181, 0.3);
+    /* 0.0 = fully transparent, 1.0 = fully white */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.btn-yoga {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-yoga:hover {
+    outline: none;
+   outline-color: var(--primary-color);
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
+}
+.bkgimg {
+    border: 0;
+    width: 70%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+iframe {
+    border: 0;
+    width: 70%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.image-sizer{
+    width: 150px;
+}
+
+/* team member */
+.mainteam {
+    background-color: #949597;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../img/teambackground.webp")
+    no-repeat center center;
+        background-size: cover;
+        background-color: var(--primary-color);
+        min-height: 500px;
+    
+}
+
+.team-section h2 {
+    font-weight: 700;
+}
+
+.team-member {
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.social-icons i {
+    font-size: 20px;
+    margin: 0 8px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: #007bff;
+}
+
+
+
+
+/* Appointment */
+
+.form-format-appointment{
+    border-radius: .5rem;
+    background: none;
+    color: var(--secondary-color);
+    
+}
+.apt-heading{
+    color: var(--secondary-color);
+}
+
+.btn-cus-apt{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border:none; 
+    border-radius: .5rem;
+}
+
+.btn-cus-apt:hover{
+    border:solid var(--secondary-color);
+}
+
+.text-area-s{
+    height: 50px;
+    resize: none;
+}
+.text-coloring {
+    color: #ed5e93;
+}
+
+.form-control,
+.form-select,
+textarea {
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* feadback form */
+
+
+<<<<<<< HEAD
+/* the team page*/
+#mainteam {
+  background-color: --primary-color;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.team-section h2 {
+  font-weight: 700;
+}
+
+.team-member {
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.social-icons i {
+  font-size: 20px;
+  margin: 0 8px;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.social-icons i:hover {
+  color: #007bff;
+=======
+.appointbkg{
+    padding: 60px 0;
+        background: url('../img/backappoint.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: 500px;
+}
+
+.emoji-rating label {
+    cursor: pointer;
+    font-size: 30px;
+>>>>>>> 8e70430be19d9a7cb7b58e8e77def36b93efd595
+}
+
+
+.emoji-rating input[type="radio"]:checked+span {
+    color: #28a745;
+
+    font-size: 45px;
+
+    transition: color 0.3s, font-size 0.3s;
+   
+}
+
+
+.emoji-rating label:hover span {
+    color: #28a745;
+   
+    font-size: 35px;
+   
+}
+
+/* footer */
+
+footer {
+    background-color: #9a9ca0;
+    color: #343a40;
+}
+
+footer .border-bottom {
+    background-color: #a9c9e8;
+}
+
+footer a.text-reset:hover {
+    color: #28a745 !important;
+    text-decoration: none;
+}
+
+footer h6 {
+    color: var(--secondary-color);
+}
+
+footer .fab {
+    color: #343a40;
+    transition: color 0.3s, transform 0.3s;
+}
+
+footer .fab:hover {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+footer .text-center.p-4 {
+    background-color: #dee2e6;
+    color: #495057;
+}
+
+/* trainers */
+
+.maintrainer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 0;
+        background: url('../img/trainerbackground2.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: fit-content;
+
+
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.social-icons i {
+    font-size: 1.2rem;
+    color: #f78ca2;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: #d94f70;
+}
+
+.letter-spacing {
+    letter-spacing: 0.2em;
+}
