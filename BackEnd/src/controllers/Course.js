@@ -55,6 +55,32 @@ export function getCourse(req,res){
 }
 
 
+export function getCourseBytitle(req,res){
+    try {
+        var title=req.params.title;
+
+        var qry=`select * from course where title='${title}'`;
+        conn.query(qry,(error,result)=>{
+            if(error){
+                console.log(error);
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({message:"Something went wrong"});
+            }else{
+                if(result.length===0){
+                    res.status(StatusCodes.NO_CONTENT).send({message:`Records are empty`});
+                   }else{
+                    console.log(result);
+                    res.status(StatusCodes.OK).send(result);
+                   }
+            }
+        })
+
+    } catch (error) {
+        console.log({m:error});
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({message:"Something went wrong"});
+    }
+}
+
+
 export function getCourseById(req,res){
     try {
         var id=req.params.id;

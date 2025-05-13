@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Bookings</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
@@ -44,12 +44,11 @@
                 <thead>
                     <tr class="text-center">
                         <th>booking id</th>
-                        <th>User Id</th>
+                        <th>User name</th>
                         <th>Course Id</th>
                         <th>Booking Date</th>
                         <th>status</th>
                         <th>Payment Status</th>
-                        <th>Session Starts</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -67,30 +66,43 @@
             try {
 
                 var response = await fetch("http://localhost:8700/yoga/Bookings");
-                
-                console.log(response)
+
                 var data = await response.json();
                 console.log(data);
+              
+               
 
                 var tbody = document.getElementById("tbody");
 
 
 
                 for (i = 0; i < data.length; i++) {
+                      var response_user= await fetch(`http://localhost:8700/yoga/user/${data[i].user_id}`);
+                var userData=await response_user.json();
+         
+                const rawDate =data[i].booking_date ;
+const date = new Date(rawDate);
 
-        
+const formattedWithTime = date.toLocaleString('en-IN', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true,
+  timeZone: 'Asia/Kolkata' // adjust as needed
+});
 
                     const tr = document.createElement("tr");
 
                    tr.innerHTML = `
 <tr>
   <td>${data[i].booking_id}</td>
-  <td>${data[i].user_id}</td>
+  <td>${userData[0].name}</td>
   <td>${data[i].course_id}</td>
-  <td>${data[i].booking_date}</td>
+  <td>${formattedWithTime}</td>
   <td>${data[i].status}</td>
   <td>${data[i].payment_status}</td>
-  <td>${data[i].session_start_date}</td>
 </tr>`;
                     tbody.appendChild(tr);
 

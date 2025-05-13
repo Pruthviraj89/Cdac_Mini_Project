@@ -6,8 +6,8 @@ const conn = createDbConnection();
 // Create Booking
 export function createBooking(req, res) {
     const data = req.body;
-    const qry = `INSERT INTO bookings (user_id, course_id, booking_date, status, payment_status, session_start_date) 
-                 VALUES (${data.user_id}, ${data.course_id}, '${data.booking_date}', '${data.status}', '${data.payment_status}', '${data.session_start_date}')`;
+    const qry = `INSERT INTO bookings (user_id, course_id, booking_date, status, payment_status) 
+                 VALUES (${data.user_id}, ${data.course_id}, '${data.booking_date}', '${data.status}', '${data.payment_status}')`;
 
     conn.query(qry, (err, result) => {
         if (err) {
@@ -54,7 +54,7 @@ export function updateBooking(req, res) {
     const data = req.body;
     const qry = `UPDATE bookings SET 
         user_id = ${data.user_id}, course_id = ${data.course_id}, booking_date = ${data.booking_date}, status = '${data.status}', 
-        payment_status = '${data.payment_status}', session_start_date = ${data.session_start_date} 
+        payment_status = '${data.payment_status}'
         WHERE booking_id = ${id}`;
 
     conn.query(qry, (err) => {

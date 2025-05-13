@@ -1,5 +1,5 @@
 import express from 'express';
-import { addFeedback, getFeedback } from '../controllers/feebackController.js';
+import { addFeedback, getFeedback } from '../controllers/Feedback.js';
 
 
 

@@ -3,7 +3,7 @@ import { addUsers, deleteUsers, getUserById, getUsers, loginUser, putUsers } fro
 import { getCourse } from '../controllers/Course.js';
 
 
-const   YogaRouter=express.Router();
+const  YogaRouter=express.Router();
 
 
 //posting blog for 1st time
