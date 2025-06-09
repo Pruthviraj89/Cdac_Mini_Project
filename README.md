@@ -4,6 +4,10 @@
 
 Welcome to **Vayura**, a web application for a yoga center offering class bookings, trainer profiles, and wellness resources. This project provides a user-friendly platform for individuals to enroll in yoga classes, explore schedules, meet professional trainers, and connect with the Vayura community.
 
+
+### Home
+![Home Page](images/home.png)
+
 ## Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -23,6 +27,9 @@ Welcome to **Vayura**, a web application for a yoga center offering class bookin
 - **Contact Information**: Connect with the yoga center via email, phone, or physical address.
 - **Social Media Integration**: Links to social media platforms for community engagement.
 
+### Home
+![Home](images/pageA.png)
+
 ## Technologies Used
 - **Frontend**:
   - HTML5
@@ -33,6 +40,12 @@ Welcome to **Vayura**, a web application for a yoga center offering class bookin
   - MongoDB/MySQL for storing user and booking data
 - **Version Control**: Git and GitHub
 - **Deployment** (optional): Vercel, Netlify, or Heroku (recommended for hosting)
+
+
+
+### Form
+![Form](images/Form.png)
+
 
 ## Installation
 Follow these steps to set up the project locally:
@@ -95,7 +108,8 @@ Yoga-Booking-Website/
 └── README.md           # Project documentation
 ```
 
-*Note*: The structure assumes additional files/folders based on typical web projects. Update this section if your repository includes specific files.
+### Teammates
+![Team](images/teams.png)
 
 ## Contributing
 Contributions are welcome! To contribute:
